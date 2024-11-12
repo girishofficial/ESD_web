@@ -1,4 +1,5 @@
 package com.project.esd_web.controllers;
+import java.security.Principal;
 import java.util.List;
 import com.project.esd_web.models.User;
 import com.project.esd_web.services.UserService;
@@ -21,5 +22,10 @@ public class homeController {
     public List<User> getUsers() {
         System.out.println("Welcome to the home page");
         return userService.getUsers();
+    }
+
+    @GetMapping("/curuser")
+    public String getLoggedInUser(Principal principal) {
+        return principal.getName();
     }
 }
