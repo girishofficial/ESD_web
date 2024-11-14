@@ -1,8 +1,10 @@
 package com.project.esd_web.controllers;
 
+import com.project.esd_web.entities.User; // Correct import
 import com.project.esd_web.models.JwtRequest;
 import com.project.esd_web.models.JwtResponse;
 import com.project.esd_web.security.JwtHelper;
+import com.project.esd_web.services.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +30,9 @@ public class AuthController {
 
     @Autowired
     private JwtHelper helper;
+
+    @Autowired
+    private UserService userService;
 
     private Logger logger = LoggerFactory.getLogger(AuthController.class);
 
@@ -63,6 +68,11 @@ public class AuthController {
     @ExceptionHandler(BadCredentialsException.class)
     public String exceptionHandler() {
         return "Credentials Invalid !!";
+    }
+
+    @PostMapping("/register")
+    public User createUser(@RequestBody User user){
+        return userService.createUser(user);
     }
 
 }

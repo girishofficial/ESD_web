@@ -1,7 +1,7 @@
 package com.project.esd_web.controllers;
 import java.security.Principal;
 import java.util.List;
-import com.project.esd_web.models.User;
+import com.project.esd_web.entities.User;
 import com.project.esd_web.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
