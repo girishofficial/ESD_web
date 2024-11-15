@@ -34,7 +34,7 @@ public class SecurityConfig {
 
         http.csrf(csrf->csrf.disable())
                 .cors(cors->cors.disable())
-                .authorizeHttpRequests(auth-> auth.requestMatchers("/home/**").authenticated().requestMatchers("/auth/register").permitAll().requestMatchers("/auth/login").permitAll().anyRequest().permitAll())
+                .authorizeHttpRequests(auth-> auth.requestMatchers("/product/**").permitAll().requestMatchers("/home/**").authenticated().requestMatchers("/auth/register").permitAll().requestMatchers("/auth/login").permitAll().anyRequest().permitAll())
                 .exceptionHandling(ex->ex.authenticationEntryPoint(point))
                 .sessionManagement(session->session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
