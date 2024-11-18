@@ -7,6 +7,7 @@ import com.project.esd_web.entities.User;
 import com.project.esd_web.repositories.CustomerRepo;
 import com.project.esd_web.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -34,7 +35,11 @@ public class homeController {
         customerRepo.deleteById(userId);
     }
 
-
+    @PutMapping("/updateUser")
+    public ResponseEntity<User> updateUser(@RequestBody User user) {
+        User updatedUser = userService.updateUser(user);
+        return ResponseEntity.ok(updatedUser);
+    }
 
     @GetMapping("/curuser")
     public String getLoggedInUser(Principal principal) {
