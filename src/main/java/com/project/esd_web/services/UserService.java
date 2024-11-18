@@ -25,6 +25,10 @@ public class UserService {
         return customerRepo.findAll();
     }
 
+    public void deleteUser(String userId){
+        customerRepo.deleteById(userId);
+    }
+
     public User createUser(User user){
         user.setUserId(UUID.randomUUID().toString());
         user.setPassword(passwordEncoder.encode(user.getPassword()));
